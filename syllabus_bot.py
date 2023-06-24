@@ -39,8 +39,8 @@ syllabus_dict = {
         "Unit V": "File System: File concept; Access methods; Directory structure; File system mounting; file sharing; protection. Secondary Storage Structures: Disk scheduling; FCFS Scheduling, SSTF scheduling, SCAN, C-SCAN scheduling, Look Scheduling, CLOOK scheduling. System Protection: Goals of protection, Principles of protection, Domain of protection, Access matrix."
     }
 }
-st.set_page_config(page_title="Syllabus GPT", page_icon="📚")
-st.title("AI Syllabus Bot")
+st.set_page_config(page_title="Syllabus GPT - by Shravan", page_icon="📚")
+st.title("AI Syllabus Bot 🤖")
 st.subheader("Pick the Subject")
 subject = st.radio("Subjects", subjects)
 
