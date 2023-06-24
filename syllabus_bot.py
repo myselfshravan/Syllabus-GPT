@@ -86,3 +86,20 @@ if check:
     )
     out = response['completion']
     st.write(out)
+
+hide_streamlit_style = """
+                    <style>
+                    # MainMenu {visibility: hidden;}
+                    footer {visibility: hidden;}
+                    footer:after {
+                    content:'Made with Passion by Shravan Revanna'; 
+                    visibility: visible;
+    	            display: block;
+    	            position: relative;
+    	            # background-color: red;
+    	            padding: 15px;
+    	            top: 2px;
+    	            }
+                    </style>
+                    """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
