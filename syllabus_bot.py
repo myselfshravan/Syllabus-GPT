@@ -52,9 +52,9 @@ with st.expander("Show Units"):
         st.write(syllabus[unit])
 st.subheader("Pick the Unit")
 selected_units = st.radio("Unit", list(syllabus.keys()))
-# selected_syllabus = {unit: syllabus[unit] for unit in selected_units}
 selected_syllabus = syllabus[selected_units]
 example_prompts = {
+    "0. Null Prompt": "Write Your Own Prompt Here",
     "1.Breakdown Topics": f"Act as a Comprehensive Engineering Course Syllabus guide for {subject} and the topics are {selected_syllabus}. Including all topics covered with brief and detailed explanations, and possible examples.",
     "2. Syllabus Unit": f"Engineering Course Content of {subject} and the topics are {selected_syllabus}. It covers all the topics and explains each of them briefly and in a detailed manner. Provided examples where necessary.",
     "3. Topic Explanation": f"Please provide a brief and detailed explanation of each topic covered in the engineering course content of {subject}. If necessary, you may also provide an example for each topic. The following is a list of topics that you should cover: [{selected_syllabus}]",
@@ -63,19 +63,14 @@ example_prompts = {
     "6. Study Schedule": f"I need help organizing my study time for {subject}. The schedule should include the topics [{selected_syllabus}]. and the time required to study each topic. You may also provide a list of resources that can be used to study the topics. Can you create a study schedule for me, including breaks and practice exercises?",
     "7. Memorization Techniques": f"I need help memorizing the topics [{selected_syllabus}]. Can you provide me with some memorization techniques that I can use to memorize the topics?",
 }
-st.write("You can either choose pre writen prompts (Guide) or write your own prompt to query the selected unit.")
+st.write("You can either pick a pre writen prompts or write/modify your own prompt to query the selected unit.")
 st.caption(f"The response will be based on the following {subject}, {selected_units} ")
-choice = st.radio("Choose", ["Guide", "Prompt"])
-if choice == "Guide":
-    st.subheader("Pick the Guide")
-    guide = st.radio("Guide", list(example_prompts.keys()))
-    prompt = example_prompts[guide]
-    with st.expander("Show Selected Prompt"):
-        st.write(example_prompts[guide])
-else:
-    st.subheader("Write the Prompt")
-    text_in = st.text_area("Prompt")
-    prompt = f"Consider the {subject} and the topics are {selected_syllabus}. I want you to take the following question and answer based on the syllabus. {text_in}"
+st.subheader("Pick the Guide")
+guide = st.radio("Guide", list(example_prompts.keys()))
+prompt = example_prompts[guide]
+st.subheader("Write the Prompt")
+text_in = st.text_area("Prompt", prompt)
+prompt = f"Consider the {subject} and the topics are {selected_syllabus}. I want you to take the following question and answer based on the syllabus. {text_in}"
 
 check = st.button("Ask the AI")
 if check:
